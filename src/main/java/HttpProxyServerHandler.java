@@ -12,6 +12,7 @@ public class HttpProxyServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(final ChannelHandlerContext ctx, final Object msg) throws Exception {
+        ChannelInitializer channelInitializer=null;
         if (msg instanceof FullHttpRequest) {
             FullHttpRequest request = (FullHttpRequest) msg;
             String host=request.headers().get(HttpHeaderNames.HOST);
@@ -29,22 +30,30 @@ public class HttpProxyServerHandler extends ChannelInboundHandlerAdapter {
                 ReferenceCountUtil.release(msg);
                 return;
             }
-            proxy2(ctx, msg);
-
-
+            channelInitializer=new HttpProxyInitializer(ctx.channel());
         }else{
-            proxy2(ctx, msg);
+            channelInitializer= new ChannelInitializer() {
+                protected void initChannel(Channel ch) throws Exception {
+                    ch.pipeline().addLast(new ChannelInboundHandlerAdapter(){
+                        @Override
+                        public void channelRead(ChannelHandlerContext ctx0, Object msg) throws Exception {
+                            ctx.channel().writeAndFlush(msg).sync();
+                        }
+                    });
+                }
+            };
         }
+        proxy(ctx,msg,channelInitializer);
     }
 
 
 
-    public void proxy(final ChannelHandlerContext ctx, final Object msg){
+    public void proxy(final ChannelHandlerContext ctx, final Object msg,ChannelInitializer channelInitializer){
         if(cf==null){
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(ctx.channel().eventLoop())
                     .channel(NioSocketChannel.class)
-                    .handler(new HttpProxyInitializer(ctx.channel()));
+                    .handler(channelInitializer);
             cf = bootstrap.connect(ip, port);
             cf.addListener(new ChannelFutureListener() {
                 public void operationComplete(ChannelFuture future) throws Exception {
@@ -57,40 +66,6 @@ public class HttpProxyServerHandler extends ChannelInboundHandlerAdapter {
             });
         }else{
             cf.channel().writeAndFlush(msg);
-        }
-    }
-
-    public void proxy2(final ChannelHandlerContext ctx, final Object msg){
-        if(cf==null){
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(ctx.channel().eventLoop())
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer() {
-                        protected void initChannel(Channel ch) throws Exception {
-                            ch.pipeline().addLast(new ChannelInboundHandlerAdapter(){
-                                @Override
-                                public void channelRead(ChannelHandlerContext ctx0, Object msg) throws Exception {
-                                    ctx.channel().writeAndFlush(msg).sync();
-                                }
-                            });
-                        }
-                    });
-            cf=bootstrap.connect(ip,port);
-            cf.addListener(new ChannelFutureListener() {
-                public void operationComplete(ChannelFuture future) throws Exception {
-                    if (future.isSuccess()) {
-                        future.channel().writeAndFlush(msg);
-                    } else {
-                        ctx.channel().close();
-                    }
-                }
-            });
-        }else{
-            try {
-                cf.channel().writeAndFlush(msg).sync();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
