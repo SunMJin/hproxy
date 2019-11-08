@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ae63f19-c207-42ec-bffc-bf84c8b21fcf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/client/SocksClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/DirectClientHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/RelayHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/SocksServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/SocksServerConnectHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/SocksServerHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/SocksServerInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/server/SocksServerUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DirectClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RelayHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerConnectHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerConnectHandler$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerConnectHandler$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerConnectHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SocksServerUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TimeClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TimeClientHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
+            <state relative-caret-position="148">
+              <caret line="166" column="50" lean-forward="true" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -45,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+            <state relative-caret-position="302">
+              <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,19 +37,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/util/concurrent/DefaultPromise.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="581" selection-start-line="581" selection-end-line="581" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+            <state relative-caret-position="258">
+              <caret line="36" column="57" lean-forward="true" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,7 +51,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RelayHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="210">
               <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
             </state>
           </provider>
@@ -87,56 +60,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/test1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state relative-caret-position="632">
+              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TimeClientHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="58" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/handler/codec/socks/SocksInitRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-110">
+              <caret line="60" column="90" lean-forward="true" selection-start-line="60" selection-start-column="90" selection-end-line="60" selection-end-column="90" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TimeClientHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="33" column="139" selection-start-line="33" selection-start-column="139" selection-end-line="33" selection-end-column="139" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+            <state relative-caret-position="254">
+              <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#1287#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/RelayHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="308">
+              <caret line="143" column="21" lean-forward="true" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -235,12 +211,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/RelayHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RelayHandler.java" />
         <option value="$PROJECT_DIR$/src/test/java/TimeClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java" />
       </list>
     </option>
   </component>
@@ -372,7 +348,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573205402849" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573205971734" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/新建文件夹" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -407,7 +383,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.test1">
+  <component name="RunManager" selected="Application.SocksServer (1)">
     <configuration name="SocksServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sunrt.proxy.remote_server.SocksServer" />
       <module name="hproxy" />
@@ -443,9 +419,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test1" />
-        <item itemvalue="Application.SocksServer" />
         <item itemvalue="Application.SocksServer (1)" />
+        <item itemvalue="Application.SocksServer" />
+        <item itemvalue="Application.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -461,12 +437,12 @@
       <updated>1568701315114</updated>
       <workItem from="1568701317610" duration="64027000" />
       <workItem from="1569219216737" duration="48285000" />
-      <workItem from="1573118112812" duration="30794000" />
+      <workItem from="1573118112812" duration="31585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143106000" />
+    <option name="totallyTimeSpent" value="143897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -505,6 +481,24 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/channel/ChannelInboundHandlerAdapter.java">
@@ -791,27 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/handler/codec/socks/SocksInitRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/util/NetUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -847,20 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/util/concurrent/DefaultPromise.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="581" selection-start-line="581" selection-end-line="581" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -868,23 +827,6 @@
           <folding>
             <element signature="e#0#1287#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -898,27 +840,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServer.java">
+    <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/util/concurrent/DefaultPromise.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="174">
+          <caret line="581" selection-start-line="581" selection-end-line="581" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RelayHandler.java">
+    <entry file="jar://D:/MavenRepository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/handler/codec/socks/SocksInitRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        <state relative-caret-position="348">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/test1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        <state relative-caret-position="632">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -927,11 +866,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TimeClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="33" column="139" selection-start-line="33" selection-start-column="139" selection-end-line="33" selection-end-column="139" />
+        <state relative-caret-position="236">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="58" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RelayHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110">
+          <caret line="60" column="90" lean-forward="true" selection-start-line="60" selection-start-column="90" selection-end-line="60" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="143" column="21" lean-forward="true" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerConnectHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="166" column="50" lean-forward="true" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="36" column="57" lean-forward="true" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
         </state>
       </provider>
     </entry>

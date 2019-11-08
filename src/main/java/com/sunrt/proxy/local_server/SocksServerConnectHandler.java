@@ -21,7 +21,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.socks.SocksAuthScheme;
 import io.netty.handler.codec.socks.SocksCmdRequest;
+import io.netty.handler.codec.socks.SocksInitRequest;
 import io.netty.handler.codec.socksx.SocksMessage;
 import io.netty.handler.codec.socksx.v4.DefaultSocks4CommandResponse;
 import io.netty.handler.codec.socksx.v4.Socks4CommandRequest;
@@ -33,6 +35,8 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.FutureListener;
 import io.netty.util.concurrent.Promise;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @ChannelHandler.Sharable
@@ -153,6 +157,13 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
     }
 
     public void sendCmdConnect(Socks5CommandRequest request,Channel outboundChannel){
+        List<SocksAuthScheme> list=new ArrayList<>();
+        list.add(SocksAuthScheme.NO_AUTH);
+        SocksInitRequest socksInitRequest=new SocksInitRequest(list);
+        ByteBuf buff = Unpooled.buffer();
+        socksInitRequest.encodeAsByteBuf(buff);
+        outboundChannel.writeAndFlush(buff);
+
         ByteBuf byteBuf = Unpooled.directBuffer();
         byteBuf.writeByte(request.version().byteValue());
         byteBuf.writeByte(request.type().byteValue());

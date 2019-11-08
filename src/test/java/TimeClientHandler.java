@@ -5,10 +5,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.socks.SocksAuthScheme;
 import io.netty.handler.codec.socks.SocksCmdRequest;
 import io.netty.handler.codec.socks.SocksInitRequest;
-import io.netty.handler.codec.socksx.v5.DefaultSocks5CommandRequest;
-import io.netty.handler.codec.socksx.v5.Socks5AddressType;
-import io.netty.handler.codec.socksx.v5.Socks5CommandRequest;
-import io.netty.handler.codec.socksx.v5.Socks5CommandType;
+import io.netty.handler.codec.socksx.v5.*;
 import io.netty.util.CharsetUtil;
 import io.netty.util.NetUtil;
 
@@ -31,16 +28,19 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) {
 
 
-        Socks5CommandRequest request=new DefaultSocks5CommandRequest(Socks5CommandType.CONNECT, Socks5AddressType.DOMAIN,"180.163.26.39",80);
+        Socks5CommandRequest socks5CommandRequest=new DefaultSocks5CommandRequest(Socks5CommandType.CONNECT, Socks5AddressType.DOMAIN,"180.163.26.39",80);
+
+
+
         ByteBuf byteBuf = Unpooled.directBuffer();
-        byteBuf.writeByte(request.version().byteValue());
-        byteBuf.writeByte(request.type().byteValue());
+        byteBuf.writeByte(socks5CommandRequest.version().byteValue());
+        byteBuf.writeByte(socks5CommandRequest.type().byteValue());
         byteBuf.writeByte(0x00);
-        Socks5AddressType socks5AddressType=request.dstAddrType();
-        byteBuf.writeByte(request.dstAddrType().byteValue());
-        int port=request.dstPort();
-        String host=request.dstAddr();
-        if(request.dstAddrType().equals(Socks5AddressType.IPv4)){
+        Socks5AddressType socks5AddressType=socks5CommandRequest.dstAddrType();
+        byteBuf.writeByte(socks5CommandRequest.dstAddrType().byteValue());
+        int port=socks5CommandRequest.dstPort();
+        String host=socks5CommandRequest.dstAddr();
+        if(socks5CommandRequest.dstAddrType().equals(Socks5AddressType.IPv4)){
             byteBuf.writeBytes(NetUtil.createByteArrayFromIpAddressString(host));
             byteBuf.writeShort(port);
         }else if(socks5AddressType.equals(Socks5AddressType.DOMAIN)){
