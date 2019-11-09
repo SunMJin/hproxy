@@ -19,12 +19,13 @@ public class test1 {
                         @Override
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
+
                             ch.pipeline().addLast(new TimeClientHandler());
                         }
                     });
 
             // 发起异步连接操作
-            ChannelFuture f = b.connect("127.0.0.1", 3080).sync();
+            ChannelFuture f = b.connect("127.0.0.1", 8080).sync();
 
             // 当代客户端链路关闭
             f.channel().closeFuture().sync();

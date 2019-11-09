@@ -16,7 +16,6 @@
 package com.sunrt.proxy.local_server;
 
 import com.sunrt.proxy.utils.SocksServerUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -39,8 +38,7 @@ public final class RelayHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
-            ByteBuf byteBuf=(ByteBuf)msg;
-            relayChannel.writeAndFlush(byteBuf);
+            relayChannel.writeAndFlush(msg);
         } else {
             ReferenceCountUtil.release(msg);
         }

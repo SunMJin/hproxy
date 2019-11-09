@@ -28,9 +28,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) {
 
 
-        Socks5CommandRequest socks5CommandRequest=new DefaultSocks5CommandRequest(Socks5CommandType.CONNECT, Socks5AddressType.DOMAIN,"180.163.26.39",80);
-
-
+        Socks5CommandRequest socks5CommandRequest=new DefaultSocks5CommandRequest(Socks5CommandType.CONNECT, Socks5AddressType.IPv4,"221.178.176.50",8081);
 
         ByteBuf byteBuf = Unpooled.directBuffer();
         byteBuf.writeByte(socks5CommandRequest.version().byteValue());
@@ -71,7 +69,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        System.out.println(Arrays.toString(req));
+        System.out.println(msg);
     }
 
     @Override
