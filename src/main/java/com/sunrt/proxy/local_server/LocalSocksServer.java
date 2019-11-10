@@ -25,8 +25,8 @@ public final class LocalSocksServer {
     static final int PORT = Integer.parseInt(System.getProperty("port", "2080"));
 
     public static void main(String[] args) throws Exception {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(10);
-        EventLoopGroup workerGroup = new NioEventLoopGroup(10);
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
