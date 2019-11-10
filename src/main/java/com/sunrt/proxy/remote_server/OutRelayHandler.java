@@ -43,7 +43,6 @@ public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
             try {
                 relayChannel.writeAndFlush(AESUtil.encrypt((ByteBuf)msg));
             } catch (Exception e) {
-                e.printStackTrace();
                 ReferenceCountUtil.release(msg);
             }
         } else {
@@ -60,7 +59,6 @@ public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
         ctx.close();
     }
 }

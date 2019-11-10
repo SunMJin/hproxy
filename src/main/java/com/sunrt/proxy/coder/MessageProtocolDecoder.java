@@ -28,9 +28,9 @@ public class MessageProtocolDecoder extends ByteToMessageDecoder {
             // 防止socket字节流攻击
             // 防止，客户端传来的数据过大
             // 因为，太大的数据，是不合理的
-            if (buffer.readableBytes() > 20480) {
+            /*if (buffer.readableBytes() > 204800) {
                 buffer.skipBytes(buffer.readableBytes());
-            }
+            }*/
 
             // 记录包头开始的index
             int beginReader;

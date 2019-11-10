@@ -3,19 +3,38 @@
   <component name="ChangeListManager">
     <list default="true" id="09e04350-8e7f-414f-9285-afd89dcd852f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/DirectClientHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/RelayHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerConnectHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/InRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/InRelayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/OutRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/OutRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RemoteProxySocksHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/RemoteProxySocksHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/InRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/InRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerConnectHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/OutRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/OutRelayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/AESUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/AESUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/RemoteProxySocksHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/RemoteProxySocksHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/GZipUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/DirectClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/RelayHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerConnectHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerConnectHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/coder/MessageProtocolDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/coder/MessageProtocolDecoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/SocksServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/SocksServerHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/InRelayHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/InRelayHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/OutRelayHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/OutRelayHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerConnectHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerConnectHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerConnectHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerConnectHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/utils/AESUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/utils/AESUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerInitializer.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +123,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SocksServer (1)">
+  <component name="RunManager" selected="Application.LocalSocksServer">
     <configuration name="AESUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sunrt.proxy.utils.AESUtil" />
       <module name="hproxy" />
@@ -160,8 +179,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SocksServer (1)" />
         <item itemvalue="Application.LocalSocksServer" />
+        <item itemvalue="Application.SocksServer (1)" />
         <item itemvalue="Application.AESUtil" />
         <item itemvalue="Application.GZipUtils" />
         <item itemvalue="Application.test" />
@@ -181,7 +200,7 @@
       <workItem from="1568701317610" duration="64027000" />
       <workItem from="1569219216737" duration="48285000" />
       <workItem from="1573118112812" duration="31585000" />
-      <workItem from="1573354656484" duration="31963000" />
+      <workItem from="1573354656484" duration="34607000" />
     </task>
     <servers />
   </component>

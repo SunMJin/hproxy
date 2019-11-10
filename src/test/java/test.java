@@ -1,3 +1,4 @@
+import io.netty.buffer.ByteBuf;
 import org.apache.commons.compress.archivers.*;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
@@ -12,10 +13,8 @@ import java.util.zip.ZipOutputStream;
 
 public class test {
     public static void main(String[] args) throws UnsupportedEncodingException {
-        byte x[]=new byte[]{-97, -78, -2, -96, -25, -58, 85, 40, 124, -75, -73, -39, -120, 95, 120, -94};
-        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-        byteArrayOutputStream.write(x,0,x.length);
-        new ZipArchiveOutputStream(byteArrayOutputStream);
+        ByteBuf s=null;
+        s.readBytes(5);
 
     }
 

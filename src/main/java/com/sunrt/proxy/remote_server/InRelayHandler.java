@@ -41,9 +41,8 @@ public final class InRelayHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
             try {
-                relayChannel.writeAndFlush(AESUtil.decrypt_mp((MessageProtocol) msg));
+                relayChannel.writeAndFlush(AESUtil.decrypt((MessageProtocol) msg));
             } catch (Exception e) {
-                e.printStackTrace();
                 ReferenceCountUtil.release(msg);
             }
         } else {
@@ -60,7 +59,6 @@ public final class InRelayHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
         ctx.close();
     }
 }

@@ -18,8 +18,6 @@ package com.sunrt.proxy.remote_server;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.socksx.SocksPortUnificationServerHandler;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
 
 public final class SocksServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
