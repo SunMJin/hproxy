@@ -1,5 +1,6 @@
 package com.sunrt.proxy.utils;
 
+import com.sunrt.proxy.protocol.MessageProtocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.ReferenceCountUtil;
@@ -25,28 +26,32 @@ public class AESUtil {
         return cipher.doFinal(sSrc);
     }
 
-    public static ByteBuf encrypt(ByteBuf byteBuf) throws Exception {
-        /*byte buf[]=new byte[byteBuf.readableBytes()];
-        byteBuf.readBytes(buf);
-        System.out.println("需要被加密："+Arrays.toString(buf));
-        byte arr[]=encrypt(buf);
-        System.out.println("加密后的："+Arrays.toString(arr));
-        ByteBuf newBuf=Unpooled.buffer(arr.length);
-        newBuf.writeBytes(arr);
-        ReferenceCountUtil.release(byteBuf);*/
-        return byteBuf;
+    public static MessageProtocol encrypt(ByteBuf byteBuf) throws Exception {
+        byte buf[]=getBytesByByteBuf(byteBuf);
+        byte data[]=AESUtil.encrypt(buf);
+        MessageProtocol messageProtocol=new MessageProtocol(data.length,data);
+        return messageProtocol;
     }
 
-    public static ByteBuf decrypt(ByteBuf byteBuf) throws Exception {
-        /*byte buf[]=new byte[byteBuf.readableBytes()];
-        byteBuf.readBytes(buf);
-        System.out.println("收到密文："+Arrays.toString(buf));
-        byte arr[]=decrypt(buf);
-        System.out.println("解密密文："+Arrays.toString(buf));
-        ByteBuf newBuf=Unpooled.buffer(arr.length);
-        newBuf.writeBytes(arr);
-        ReferenceCountUtil.release(byteBuf);*/
-        return byteBuf;
+    public static MessageProtocol decrypt(ByteBuf byteBuf) throws Exception {
+        byte buf[]=getBytesByByteBuf(byteBuf);
+        byte data[]=AESUtil.decrypt(buf);
+        MessageProtocol messageProtocol=new MessageProtocol(data.length,data);
+        return messageProtocol;
+    }
+
+    public static ByteBuf decrypt_mp(MessageProtocol messageProtocol) throws Exception {
+        byte buf[]=messageProtocol.getContent();
+        ByteBuf newBuf=Unpooled.buffer(buf.length);
+        newBuf.writeBytes(decrypt(buf));
+        return newBuf;
+    }
+
+    public static byte[] getBytesByByteBuf(ByteBuf byteBuf){
+        byte buf[]=new byte[byteBuf.readableBytes()];
+        byteBuf.getBytes(0,buf);
+        ReferenceCountUtil.release(byteBuf);
+        return buf;
     }
 
     public static void main(String[] args) throws Exception {
@@ -55,7 +60,7 @@ public class AESUtil {
         //System.out.println(Arrays.toString(x.getBytes()));
         //byte x1[]=encrypt(x.getBytes());
         //System.out.println(Arrays.toString(x1));
-        byte x2[]=decrypt(x);
+        byte x2[]= decrypt(x);
         System.out.println(Arrays.toString(x2));
 
     }

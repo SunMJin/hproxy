@@ -15,6 +15,8 @@
  */
 package com.sunrt.proxy.remote_server;
 
+import com.sunrt.proxy.coder.MessageProtocolDecoder;
+import com.sunrt.proxy.coder.MessageProtocolEncoder;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -57,6 +59,10 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                                             request.dstPort()));
                             responseFuture.addListener((ChannelFutureListener) channelFuture -> {
                                 ctx.pipeline().remove(SocksServerConnectHandler.this);
+
+                                ctx.pipeline().addLast(new MessageProtocolEncoder());
+                                ctx.pipeline().addLast(new MessageProtocolDecoder());
+
                                 outboundChannel.pipeline().addLast(new OutRelayHandler(ctx.channel()));
                                 ctx.pipeline().addLast(new InRelayHandler(outboundChannel));
                             });
