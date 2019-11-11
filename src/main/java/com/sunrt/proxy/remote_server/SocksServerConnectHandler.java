@@ -28,9 +28,6 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.socksx.SocksMessage;
-import io.netty.handler.codec.socksx.v4.DefaultSocks4CommandResponse;
-import io.netty.handler.codec.socksx.v4.Socks4CommandRequest;
-import io.netty.handler.codec.socksx.v4.Socks4CommandStatus;
 import io.netty.handler.codec.socksx.v5.DefaultSocks5CommandResponse;
 import io.netty.handler.codec.socksx.v5.Socks5CommandRequest;
 import io.netty.handler.codec.socksx.v5.Socks5CommandStatus;
@@ -63,8 +60,8 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                                 ctx.pipeline().addLast(new MessageProtocolEncoder());
                                 ctx.pipeline().addLast(new MessageProtocolDecoder());
 
-                                outboundChannel.pipeline().addLast(new OutRelayHandler(ctx.channel()));
-                                ctx.pipeline().addLast(new InRelayHandler(outboundChannel));
+                                outboundChannel.pipeline().addLast(new InRelayHandler(ctx.channel()));
+                                ctx.pipeline().addLast(new OutRelayHandler(outboundChannel));
                             });
                         } else {
                             ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(

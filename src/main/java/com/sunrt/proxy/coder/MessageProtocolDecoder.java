@@ -2,7 +2,7 @@ package com.sunrt.proxy.coder;
 
 
 import com.sunrt.proxy.protocol.MessageProtocol;
-import com.sunrt.proxy.utils.Constant;
+import com.sunrt.proxy.protocol.MPConstant;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -44,7 +44,7 @@ public class MessageProtocolDecoder extends ByteToMessageDecoder {
                 // 读到了协议的开始标志，结束while循环
                 int head = buffer.readInt();
                 //System.out.println("读取的int："+head);
-                if (head == Constant.HEAD) {
+                if (head == MPConstant.HEAD) {
                     break;
                 }
 

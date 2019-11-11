@@ -13,20 +13,24 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.local_server;
+package com.sunrt.proxy.SecureChat;
 
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.socksx.SocksPortUnificationServerHandler;
-import io.netty.handler.codec.socksx.v5.Socks5InitialRequestDecoder;
-import io.netty.handler.codec.socksx.v5.Socks5ServerEncoder;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 
-public final class SocksServerInitializer extends ChannelInitializer<SocketChannel> {
+/**
+ * Handles a client-side channel.
+ */
+public class SecureChatClientHandler extends SimpleChannelInboundHandler<String> {
+
     @Override
-    public void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast(
-                Socks5ServerEncoder.DEFAULT,
-                new Socks5InitialRequestDecoder(),
-                SocksServerHandler.INSTANCE);
+    public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        System.err.println(msg);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        cause.printStackTrace();
+        ctx.close();
     }
 }

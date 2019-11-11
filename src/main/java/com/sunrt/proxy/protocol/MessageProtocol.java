@@ -1,8 +1,6 @@
 package com.sunrt.proxy.protocol;
 
 
-import com.sunrt.proxy.utils.Constant;
-
 import java.util.Arrays;
 
 /**
@@ -21,7 +19,7 @@ public class MessageProtocol {
     /**
      * 消息的开头的信息标志
      */
-    private int head_data = Constant.HEAD;
+    private int head_data = MPConstant.HEAD;
     /**
      * 消息的长度
      */

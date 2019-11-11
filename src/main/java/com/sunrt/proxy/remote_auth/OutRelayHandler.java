@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.remote_server;
+package com.sunrt.proxy.remote_auth;
 
 import com.sunrt.proxy.protocol.MessageProtocol;
 import com.sunrt.proxy.utils.AESUtil;

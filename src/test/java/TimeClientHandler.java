@@ -35,7 +35,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
                     });
 
             // 发起异步连接操作
-            ChannelFuture f = b.connect("127.0.0.1", 3080).sync();
+            ChannelFuture f = b.connect("127.0.0.1", 2080).sync();
 
             // 当代客户端链路关闭
             f.channel().closeFuture().sync();
@@ -47,21 +47,21 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        Socks5InitialRequest socks5InitialRequest=new DefaultSocks5InitialRequest(Socks5AuthMethod.NO_AUTH,Socks5AuthMethod.PASSWORD);
+        Socks5InitialRequest socks5InitialRequest=new DefaultSocks5InitialRequest(Socks5AuthMethod.NO_AUTH);
         ctx.writeAndFlush(socks5InitialRequest);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception {
-        if(msg instanceof Socks5InitialResponse){
+        /*if(msg instanceof Socks5InitialResponse){
             Socks5InitialResponse socks5InitialResponse=(Socks5InitialResponse)msg;
             if(socks5InitialResponse.authMethod()==Socks5AuthMethod.PASSWORD){
                 ctx.pipeline().addFirst(new Socks5PasswordAuthResponseDecoder());
                 Socks5PasswordAuthRequest socks5PasswordAuthRequest=new DefaultSocks5PasswordAuthRequest("123","456");
                 ctx.writeAndFlush(socks5PasswordAuthRequest);
             }
-        }
+        }*/
         System.out.println(msg);
     }
 

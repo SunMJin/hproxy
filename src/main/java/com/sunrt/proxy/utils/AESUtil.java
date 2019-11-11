@@ -4,6 +4,7 @@ import com.sunrt.proxy.protocol.MessageProtocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.ReferenceCountUtil;
+import org.xerial.snappy.Snappy;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -27,7 +28,7 @@ public class AESUtil {
 
     public static MessageProtocol encrypt(ByteBuf byteBuf) throws Exception {
         byte buf[]=getBytesByByteBuf(byteBuf);
-        byte data[]=AESUtil.encrypt(buf);
+        byte data[]=AESUtil.encrypt(Snappy.compress(buf));
         MessageProtocol messageProtocol=new MessageProtocol(data.length,data);
         return messageProtocol;
     }
@@ -35,7 +36,7 @@ public class AESUtil {
     public static ByteBuf decrypt(MessageProtocol messageProtocol) throws Exception {
         byte buf[]=messageProtocol.getContent();
         ByteBuf newBuf=Unpooled.buffer(buf.length);
-        newBuf.writeBytes(decrypt(buf));
+        newBuf.writeBytes(Snappy.uncompress(decrypt(buf)));
         return newBuf;
     }
 
