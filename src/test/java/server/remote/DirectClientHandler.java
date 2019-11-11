@@ -13,24 +13,29 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.SecureChat;
+package server.remote;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.concurrent.Promise;
 
-/**
- * Handles a client-side channel.
- */
-public class SecureChatClientHandler extends SimpleChannelInboundHandler<String> {
+public final class DirectClientHandler extends ChannelInboundHandlerAdapter {
 
-    @Override
-    public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.err.println(msg);
+    private final Promise<Channel> promise;
+
+    public DirectClientHandler(Promise<Channel> promise) {
+        this.promise = promise;
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
-        ctx.close();
+    public void channelActive(ChannelHandlerContext ctx) {
+        ctx.pipeline().remove(this);
+        promise.setSuccess(ctx.channel());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) {
+        promise.setFailure(throwable);
     }
 }
