@@ -1,4 +1,4 @@
-package com.sunrt.proxy.local_auth;
+package com.sunrt.proxy.server.local;
 
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.bootstrap.Bootstrap;

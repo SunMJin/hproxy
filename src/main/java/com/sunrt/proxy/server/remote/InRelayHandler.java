@@ -13,22 +13,22 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.local_server;
+package com.sunrt.proxy.server.remote;
 
-import com.sunrt.proxy.protocol.MessageProtocol;
 import com.sunrt.proxy.utils.AESUtil;
 import com.sunrt.proxy.utils.SocksServerUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 
-public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
+public final class InRelayHandler extends ChannelInboundHandlerAdapter {
 
     private final Channel relayChannel;
 
-    public OutRelayHandler(Channel relayChannel) {
+    public InRelayHandler(Channel relayChannel) {
         this.relayChannel = relayChannel;
     }
 
@@ -41,7 +41,7 @@ public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
             try {
-                relayChannel.writeAndFlush(AESUtil.decrypt((MessageProtocol)msg));
+                relayChannel.writeAndFlush(AESUtil.encrypt((ByteBuf)msg));
             } catch (Exception e) {
                 ReferenceCountUtil.release(msg);
             }

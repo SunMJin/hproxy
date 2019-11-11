@@ -13,16 +13,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.local_server;
+package com.sunrt.proxy.server.remote;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public final class LocalSocksServer {
+public final class RemoteSocksServer {
 
-    static final int PORT = Integer.parseInt(System.getProperty("port", "2080"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", "3080"));
 
     public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.local_auth;
+package com.sunrt.proxy.server.local;
 
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.channel.ChannelHandler;

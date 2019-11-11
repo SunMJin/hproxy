@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.remote_server;
+package com.sunrt.proxy.server.local;
 
 import com.sunrt.proxy.protocol.MessageProtocol;
 import com.sunrt.proxy.utils.AESUtil;
@@ -41,7 +41,7 @@ public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
             try {
-                relayChannel.writeAndFlush(AESUtil.decrypt((MessageProtocol) msg));
+                relayChannel.writeAndFlush(AESUtil.decrypt((MessageProtocol)msg));
             } catch (Exception e) {
                 ReferenceCountUtil.release(msg);
             }

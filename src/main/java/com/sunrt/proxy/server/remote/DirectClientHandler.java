@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.sunrt.proxy.remote_server;
+package com.sunrt.proxy.server.remote;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
