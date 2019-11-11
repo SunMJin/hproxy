@@ -9,5 +9,8 @@
         <module name="hproxy" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hproxy" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,251 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="09e04350-8e7f-414f-9285-afd89dcd852f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/DirectClientHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/RelayHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerConnectHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth/SocksServerInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/coder/MessageProtocolEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/InRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/InRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/OutRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/OutRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/local_server/SocksServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/InRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/InRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/OutRelayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/OutRelayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/remote_server/SocksServerInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/AESUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/AESUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/utils/GZipUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/DirectClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/RelayHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerConnectHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerConnectHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/auth/SocksServerInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/coder/MessageProtocolDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/coder/MessageProtocolDecoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/SocksServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/local_server/SocksServerHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/InRelayHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/InRelayHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/OutRelayHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/OutRelayHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrt/proxy/remote_server/SocksServerInitializer.class" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="294" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/apache-maven-3.6.2" />
+        <option name="mavenHome" value="D:/MyDevTools/apache-maven-3.6.0" />
         <option name="userSettingsFile" value="D:\MyDevTools\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1TPH8ktOjmPEi7CQmz1UbU85Fsw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-48" />
+    <option name="y" value="121" />
+    <option name="width" value="1936" />
+    <option name="height" value="1052" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573205971734" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/sunrt/proxy/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.sunrt.proxy.utils" />
-      <recent name="com.sunrt.proxy.local_server" />
-      <recent name="com.sunrt.proxy.remote_server" />
-      <recent name="pojo" />
-      <recent name="com.sunrt.proxy.client" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sun\Desktop\hproxy\src\main\java\com\sunrt\proxy\auth" />
-      <recent name="C:\Users\sun\Desktop\hproxy\src\main\java\com\sunrt\proxy" />
-      <recent name="C:\Users\sun\Desktop\hproxy\src\test\java" />
-      <recent name="C:\Users\sun\Desktop\hproxy\src\main\java\com\sunrt\proxy\local_server" />
-      <recent name="C:\Users\sun\Desktop\hproxy\src\main\java\com\sunrt\proxy\remote_server" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.LocalSocksServer">
-    <configuration name="AESUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sunrt.proxy.utils.AESUtil" />
-      <module name="hproxy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sunrt.proxy.protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GZipUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GZipUtils" />
-      <module name="hproxy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LocalSocksServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sunrt.proxy.local_server.LocalSocksServer" />
-      <module name="hproxy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sunrt.proxy.local_server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SocksServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sunrt.proxy.remote_server.SocksServer" />
-      <module name="hproxy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sunrt.proxy.remote_server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <module name="hproxy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.LocalSocksServer" />
-        <item itemvalue="Application.SocksServer (1)" />
-        <item itemvalue="Application.AESUtil" />
-        <item itemvalue="Application.GZipUtils" />
-        <item itemvalue="Application.test" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="09e04350-8e7f-414f-9285-afd89dcd852f" name="Default Changelist" comment="" />
-      <created>1568701315114</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1568701315114</updated>
-      <workItem from="1568701317610" duration="64027000" />
-      <workItem from="1569219216737" duration="48285000" />
-      <workItem from="1573118112812" duration="31585000" />
-      <workItem from="1573354656484" duration="34607000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://D:/repository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/handler/codec/socks/SocksMessageEncoder.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="174" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://D:/repository/io/netty/netty-all/4.1.41.Final/netty-all-4.1.41.Final-sources.jar!/io/netty/channel/ChannelInboundHandlerAdapter.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="248" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/hproxy$LocalSocksServer.ic" NAME="LocalSocksServer Coverage Results" MODIFIED="1573376376478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.sunrt.proxy.local_server.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/hproxy$TimeClientHandler.ic" NAME="TimeClientHandler Coverage Results" MODIFIED="1573365629795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/hproxy$SubReqServer.ic" NAME="SubReqServer Coverage Results" MODIFIED="1573291062592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>netty.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/hproxy$SubReqClient.ic" NAME="SubReqClient Coverage Results" MODIFIED="1573304870399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>netty.*</FILTER>
-    </SUITE>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
