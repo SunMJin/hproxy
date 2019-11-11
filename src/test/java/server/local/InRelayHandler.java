@@ -15,9 +15,7 @@
  */
 package server.local;
 
-import com.sunrt.proxy.utils.AESUtil;
 import com.sunrt.proxy.utils.SocksServerUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

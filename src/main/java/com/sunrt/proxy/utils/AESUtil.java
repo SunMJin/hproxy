@@ -1,3 +1,4 @@
+/*
 package com.sunrt.proxy.utils;
 
 import com.sunrt.proxy.protocol.MessageProtocol;
@@ -47,4 +48,4 @@ public class AESUtil {
         return buf;
     }
 
-}
+}*/

@@ -15,8 +15,6 @@
  */
 package server.remote;
 
-import com.sunrt.proxy.protocol.MessageProtocol;
-import com.sunrt.proxy.utils.AESUtil;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;

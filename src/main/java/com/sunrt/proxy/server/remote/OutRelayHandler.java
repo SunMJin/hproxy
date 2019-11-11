@@ -15,8 +15,6 @@
  */
 package com.sunrt.proxy.server.remote;
 
-import com.sunrt.proxy.protocol.MessageProtocol;
-import com.sunrt.proxy.utils.AESUtil;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
@@ -40,11 +38,7 @@ public final class OutRelayHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
-            try {
-                relayChannel.writeAndFlush(AESUtil.decrypt((MessageProtocol) msg));
-            } catch (Exception e) {
-                ReferenceCountUtil.release(msg);
-            }
+            relayChannel.writeAndFlush(msg);
         } else {
             ReferenceCountUtil.release(msg);
         }

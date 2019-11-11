@@ -6,6 +6,9 @@ import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.socksx.v5.*;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 @ChannelHandler.Sharable
 public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<Socks5Message> {
@@ -15,6 +18,10 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final Socks5Message message) throws Exception {
         final Socks5CommandRequest request = (Socks5CommandRequest) message;
+
+        final SslContext sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3")
+                .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+
         b.group(ctx.channel().eventLoop())
                 .channel(NioSocketChannel.class)
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
@@ -22,8 +29,10 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(sslCtx.newHandler(ch.alloc(), "127.0.0.1", 3080));
                         ch.pipeline().addLast(Socks5ClientEncoder.DEFAULT);
                         ch.pipeline().addLast(new Socks5InitialResponseDecoder());
+                        ch.pipeline().addLast(new Socks5CommandResponseDecoder());
                         ch.pipeline().addLast(new RemoteProxySocksHandler(request,ctx, SocksServerConnectHandler.this));
                     }
                 });

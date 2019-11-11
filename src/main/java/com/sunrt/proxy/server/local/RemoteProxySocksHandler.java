@@ -1,9 +1,10 @@
 package com.sunrt.proxy.server.local;
 
-import com.sunrt.proxy.coder.MessageProtocolDecoder;
-import com.sunrt.proxy.coder.MessageProtocolEncoder;
 import com.sunrt.proxy.utils.SocksServerUtils;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.socksx.v5.*;
 
 public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5Message> {
@@ -23,7 +24,8 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
         if(msg instanceof Socks5InitialResponse){
             Socks5InitialResponse initialResponse=(Socks5InitialResponse)msg;
             if(initialResponse.authMethod()== Socks5AuthMethod.NO_AUTH){
-                ctx_remote.pipeline().addFirst(new Socks5CommandResponseDecoder());
+                //ctx_remote.pipeline().addFirst(new Socks5CommandResponseDecoder());
+                //ctx_remote.pipeline().addBefore("");
                 ctx_remote.pipeline().writeAndFlush(request);
             }
         }else if(msg instanceof Socks5CommandResponse){
@@ -38,9 +40,6 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
                 responseFuture.addListener((ChannelFutureListener) channelFuture -> {
                     ctx_remote.pipeline().remove(this);
                     ctx_local.pipeline().remove(localSocksServerConnectHandler);
-
-                    ctx_remote.pipeline().addLast(new MessageProtocolEncoder());
-                    ctx_remote.pipeline().addFirst(new MessageProtocolDecoder());
 
                     ctx_remote.pipeline().addLast(new OutRelayHandler(ctx_local.channel()));
                     ctx_local.pipeline().addLast(new InRelayHandler(ctx_remote.channel()));

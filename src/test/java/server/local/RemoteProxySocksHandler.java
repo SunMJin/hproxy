@@ -1,7 +1,5 @@
 package server.local;
 
-import com.sunrt.proxy.coder.MessageProtocolDecoder;
-import com.sunrt.proxy.coder.MessageProtocolEncoder;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -42,9 +40,6 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
                 responseFuture.addListener((ChannelFutureListener) channelFuture -> {
                     ctx_remote.pipeline().remove(this);
                     ctx_local.pipeline().remove(localSocksServerConnectHandler);
-
-                    //ctx_remote.pipeline().addLast(new MessageProtocolEncoder());
-                    //ctx_remote.pipeline().addFirst(new MessageProtocolDecoder());
 
                     ctx_remote.pipeline().addLast(new OutRelayHandler(ctx_local.channel()));
                     ctx_local.pipeline().addLast(new InRelayHandler(ctx_remote.channel()));
