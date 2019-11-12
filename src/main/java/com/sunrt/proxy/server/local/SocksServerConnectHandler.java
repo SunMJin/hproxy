@@ -10,17 +10,27 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
+import javax.net.ssl.SSLException;
+
 @ChannelHandler.Sharable
 public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<Socks5Message> {
 
     private final Bootstrap b = new Bootstrap();
+    private static SslContext sslCtx;
+
+    static {
+        try {
+            sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3").trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+        } catch (SSLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final Socks5Message message) throws Exception {
         final Socks5CommandRequest request = (Socks5CommandRequest) message;
 
-        final SslContext sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3")
-                .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+        final SslContext sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3").trustManager(InsecureTrustManagerFactory.INSTANCE).build();
 
         b.group(ctx.channel().eventLoop())
                 .channel(NioSocketChannel.class)
@@ -31,17 +41,14 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                     public void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(sslCtx.newHandler(ch.alloc(), "127.0.0.1", 3080));
                         ch.pipeline().addLast(Socks5ClientEncoder.DEFAULT);
-                        ch.pipeline().addLast(new Socks5InitialResponseDecoder());
-                        ch.pipeline().addLast(new Socks5CommandResponseDecoder());
+                        ch.pipeline().addLast("Socks5PasswordAuthResponseDecoder",new Socks5PasswordAuthResponseDecoder());
                         ch.pipeline().addLast(new RemoteProxySocksHandler(request,ctx, SocksServerConnectHandler.this));
                     }
                 });
-
         b.connect("127.0.0.1", 3080).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {
             } else {
-                ctx.channel().writeAndFlush(
-                        new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
+                ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
                 SocksServerUtils.closeOnFlush(ctx.channel());
             }
         });
