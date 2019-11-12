@@ -15,16 +15,12 @@
  */
 package com.sunrt.proxy.server.local;
 
-import com.sunrt.proxy.utils.CompressUtil;
 import com.sunrt.proxy.utils.SocksServerUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
-
-import java.io.IOException;
 
 public final class InRelayHandler extends ChannelInboundHandlerAdapter {
 
@@ -42,11 +38,7 @@ public final class InRelayHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         if (relayChannel.isActive()) {
-            try {
-                relayChannel.writeAndFlush(CompressUtil.compressByteBuf((ByteBuf) msg));
-            } catch (IOException e) {
-                ReferenceCountUtil.release(msg);
-            }
+            relayChannel.writeAndFlush(msg);
         } else {
             ReferenceCountUtil.release(msg);
         }
