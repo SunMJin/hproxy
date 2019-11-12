@@ -27,7 +27,7 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new RemoteSocksServerInitializer(request,ctx));
-        b.connect("127.0.0.1", 3080).addListener((ChannelFutureListener) future -> {
+        b.connect("127.0.0.1", 444).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {
             } else {
                 ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));

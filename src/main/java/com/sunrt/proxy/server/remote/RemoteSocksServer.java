@@ -27,7 +27,7 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 
 public final class RemoteSocksServer {
-    static final int PORT = Integer.parseInt(System.getProperty("port", "3080"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", "444"));
     static final SslContext sslCtx = TLSUtil.getServerSslContext();
     static {
         if(sslCtx==null){

@@ -23,7 +23,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public final class LocalSocksServer {
 
-    static final int PORT = Integer.parseInt(System.getProperty("port", "2080"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", "1080"));
 
     public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
