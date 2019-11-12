@@ -11,13 +11,11 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
 
     private final Socks5CommandRequest request;
     private final ChannelHandlerContext ctx_local;
-    private final SocksServerConnectHandler localSocksServerConnectHandler;
 
-    public RemoteProxySocksHandler(Socks5CommandRequest request, ChannelHandlerContext outCtx,
-                                   SocksServerConnectHandler localSocksServerConnectHandler) {
+
+    public RemoteProxySocksHandler(Socks5CommandRequest request, ChannelHandlerContext outCtx) {
         this.request = request;
         this.ctx_local = outCtx;
-        this.localSocksServerConnectHandler = localSocksServerConnectHandler;
     }
 
     @Override
@@ -35,7 +33,6 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
             if(commandResponse.status()==Socks5CommandStatus.SUCCESS){
                 socks5CmdCallBack(true).addListener((ChannelFutureListener) channelFuture -> {
                     ctx_remote.pipeline().remove(this);
-                    ctx_local.pipeline().remove(localSocksServerConnectHandler);
                     ctx_remote.pipeline().addLast(new OutRelayHandler(ctx_local.channel()));
                     ctx_local.pipeline().addLast(new InRelayHandler(ctx_remote.channel()));
                 });

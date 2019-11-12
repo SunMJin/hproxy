@@ -15,6 +15,7 @@
  */
 package com.sunrt.proxy.server.remote;
 
+import com.sunrt.proxy.utils.TLSUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -26,13 +27,14 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 
 public final class RemoteSocksServer {
-
     static final int PORT = Integer.parseInt(System.getProperty("port", "3080"));
-
+    static final SslContext sslCtx = TLSUtil.getServerSslContext();
+    static {
+        if(sslCtx==null){
+            throw new NullPointerException("ssl context error");
+        }
+    }
     public static void main(String[] args) throws Exception {
-        SelfSignedCertificate ssc = new SelfSignedCertificate();
-        SslContext sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).protocols("TLSv1.3").build();
-
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

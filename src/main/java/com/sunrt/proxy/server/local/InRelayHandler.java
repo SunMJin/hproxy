@@ -52,6 +52,7 @@ public final class InRelayHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         if (relayChannel.isActive()) {

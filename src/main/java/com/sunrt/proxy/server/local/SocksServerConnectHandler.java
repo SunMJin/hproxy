@@ -1,6 +1,7 @@
 package com.sunrt.proxy.server.local;
 
 import com.sunrt.proxy.utils.SocksServerUtils;
+import com.sunrt.proxy.utils.TLSUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
@@ -16,32 +17,16 @@ import javax.net.ssl.SSLException;
 public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<Socks5Message> {
 
     private final Bootstrap b = new Bootstrap();
-    private static SslContext sslCtx;
-
-    static {
-        try {
-            sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3").trustManager(InsecureTrustManagerFactory.INSTANCE).build();
-        } catch (SSLException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final Socks5Message message) throws Exception {
         final Socks5CommandRequest request = (Socks5CommandRequest) message;
+        ctx.pipeline().remove(this);
         b.group(ctx.channel().eventLoop())
                 .channel(NioSocketChannel.class)
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
                 .option(ChannelOption.SO_KEEPALIVE, true)
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    public void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(sslCtx.newHandler(ch.alloc(), "127.0.0.1", 3080));
-                        ch.pipeline().addLast(Socks5ClientEncoder.DEFAULT);
-                        ch.pipeline().addLast("Socks5PasswordAuthResponseDecoder",new Socks5PasswordAuthResponseDecoder());
-                        ch.pipeline().addLast(new RemoteProxySocksHandler(request,ctx, SocksServerConnectHandler.this));
-                    }
-                });
+                .handler(new RemoteSocksServerInitializer(request,ctx));
         b.connect("127.0.0.1", 3080).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {
             } else {
