@@ -29,9 +29,6 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final Socks5Message message) throws Exception {
         final Socks5CommandRequest request = (Socks5CommandRequest) message;
-
-        final SslContext sslCtx = SslContextBuilder.forClient().protocols("TLSv1.3").trustManager(InsecureTrustManagerFactory.INSTANCE).build();
-
         b.group(ctx.channel().eventLoop())
                 .channel(NioSocketChannel.class)
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)

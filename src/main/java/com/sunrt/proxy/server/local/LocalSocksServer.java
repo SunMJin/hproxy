@@ -16,6 +16,7 @@
 package com.sunrt.proxy.server.local;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -32,7 +33,9 @@ public final class LocalSocksServer {
             b.group(bossGroup, workerGroup)
              .channel(NioServerSocketChannel.class)
              .childHandler(new SocksServerInitializer());
-            b.bind(PORT).sync().channel().closeFuture().sync();
+            ChannelFuture channelFuture=b.bind(PORT).sync().channel().closeFuture();
+            System.out.println("local server started successfully!");
+            channelFuture.sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();

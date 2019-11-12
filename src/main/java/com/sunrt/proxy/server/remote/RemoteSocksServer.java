@@ -16,6 +16,8 @@
 package com.sunrt.proxy.server.remote;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -38,7 +40,9 @@ public final class RemoteSocksServer {
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new SocksServerInitializer(sslCtx));
-            b.bind(PORT).sync().channel().closeFuture().sync();
+            ChannelFuture channelFuture=b.bind(PORT).sync().channel().closeFuture();
+            System.out.println("remote server started successfully!");
+            channelFuture.sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();

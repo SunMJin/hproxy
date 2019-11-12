@@ -8,9 +8,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.socksx.v5.*;
 
 public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5Message> {
-    private Socks5CommandRequest request;
-    private ChannelHandlerContext ctx_local;
-    private SocksServerConnectHandler localSocksServerConnectHandler;
+
+    private final Socks5CommandRequest request;
+    private final ChannelHandlerContext ctx_local;
+    private final SocksServerConnectHandler localSocksServerConnectHandler;
 
     public RemoteProxySocksHandler(Socks5CommandRequest request, ChannelHandlerContext outCtx,
                                    SocksServerConnectHandler localSocksServerConnectHandler) {
@@ -32,8 +33,7 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
         }else if(msg instanceof Socks5CommandResponse){
             Socks5CommandResponse commandResponse=(Socks5CommandResponse)msg;
             if(commandResponse.status()==Socks5CommandStatus.SUCCESS){
-                ChannelFuture responseFuture = socks5CmdCallBack(true);
-                responseFuture.addListener((ChannelFutureListener) channelFuture -> {
+                socks5CmdCallBack(true).addListener((ChannelFutureListener) channelFuture -> {
                     ctx_remote.pipeline().remove(this);
                     ctx_local.pipeline().remove(localSocksServerConnectHandler);
                     ctx_remote.pipeline().addLast(new OutRelayHandler(ctx_local.channel()));
@@ -48,6 +48,11 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.pipeline().writeAndFlush(new DefaultSocks5PasswordAuthRequest("admin", "123456"));
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) {
+        ctx.flush();
     }
 
     @Override

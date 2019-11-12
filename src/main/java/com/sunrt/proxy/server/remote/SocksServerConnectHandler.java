@@ -63,15 +63,12 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new DirectClientHandler(promise));
 
-        b.connect(request.dstAddr(), request.dstPort()).addListener(new ChannelFutureListener() {
-            @Override
-            public void operationComplete(ChannelFuture future) throws Exception {
-                if (future.isSuccess()) {
-                } else {
-                    server_ctx.channel().writeAndFlush(
-                            new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
-                    SocksServerUtils.closeOnFlush(server_ctx.channel());
-                }
+        b.connect(request.dstAddr(), request.dstPort()).addListener((ChannelFutureListener) future -> {
+            if (future.isSuccess()) {
+            } else {
+                server_ctx.channel().writeAndFlush(
+                        new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
+                SocksServerUtils.closeOnFlush(server_ctx.channel());
             }
         });
     }

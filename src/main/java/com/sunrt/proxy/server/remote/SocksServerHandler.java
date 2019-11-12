@@ -16,8 +16,13 @@ public final class SocksServerHandler extends SimpleChannelInboundHandler<Socks5
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Socks5Message socksRequest) throws Exception {
         if (socksRequest instanceof Socks5PasswordAuthRequest) {
-            ctx.pipeline().addAfter("Socks5PasswordAuthRequestDecoder",null,new Socks5CommandRequestDecoder());
-            ctx.write(new DefaultSocks5PasswordAuthResponse(Socks5PasswordAuthStatus.SUCCESS));
+            Socks5PasswordAuthRequest socks5PasswordAuthRequest=(Socks5PasswordAuthRequest)socksRequest;
+            if("admin".equals(socks5PasswordAuthRequest.username())&&"123456".equals(socks5PasswordAuthRequest.password())){
+                ctx.pipeline().addAfter("Socks5PasswordAuthRequestDecoder",null,new Socks5CommandRequestDecoder());
+                ctx.write(new DefaultSocks5PasswordAuthResponse(Socks5PasswordAuthStatus.SUCCESS));
+            }else {
+                ctx.write(new DefaultSocks5PasswordAuthResponse(Socks5PasswordAuthStatus.FAILURE));
+            }
         } else if (socksRequest instanceof Socks5CommandRequest) {
             Socks5CommandRequest socks5CmdRequest = (Socks5CommandRequest) socksRequest;
             if (socks5CmdRequest.type() == Socks5CommandType.CONNECT) {
