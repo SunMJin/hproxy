@@ -15,6 +15,7 @@
  */
 package com.sunrt.proxy.server.local;
 
+import com.sunrt.proxy.utils.Conf;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -23,7 +24,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public final class LocalSocksServer {
 
-    static final int PORT = Integer.parseInt(System.getProperty("port", "1080"));
+    static final int PORT = Conf.localPort;
 
     public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();

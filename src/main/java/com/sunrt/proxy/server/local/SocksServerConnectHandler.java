@@ -1,17 +1,14 @@
 package com.sunrt.proxy.server.local;
 
+import com.sunrt.proxy.utils.Conf;
 import com.sunrt.proxy.utils.SocksServerUtils;
-import com.sunrt.proxy.utils.TLSUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.socksx.v5.*;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
-
-import javax.net.ssl.SSLException;
+import io.netty.handler.codec.socksx.v5.DefaultSocks5CommandResponse;
+import io.netty.handler.codec.socksx.v5.Socks5CommandRequest;
+import io.netty.handler.codec.socksx.v5.Socks5CommandStatus;
+import io.netty.handler.codec.socksx.v5.Socks5Message;
 
 @ChannelHandler.Sharable
 public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<Socks5Message> {
@@ -27,7 +24,7 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new RemoteSocksServerInitializer(request,ctx));
-        b.connect("127.0.0.1", 444).addListener((ChannelFutureListener) future -> {
+        b.connect(Conf.remoteHost, Conf.remotePort).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {
             } else {
                 ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));

@@ -1,5 +1,6 @@
 package com.sunrt.proxy.server.local;
 
+import com.sunrt.proxy.utils.Conf;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -44,7 +45,7 @@ public class RemoteProxySocksHandler extends SimpleChannelInboundHandler<Socks5M
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.pipeline().writeAndFlush(new DefaultSocks5PasswordAuthRequest("admin", "123456"));
+        ctx.pipeline().writeAndFlush(new DefaultSocks5PasswordAuthRequest(Conf.user, Conf.password));
     }
 
     @Override

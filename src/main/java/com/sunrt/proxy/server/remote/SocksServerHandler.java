@@ -1,5 +1,6 @@
 package com.sunrt.proxy.server.remote;
 
+import com.sunrt.proxy.utils.Conf;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,7 +18,7 @@ public final class SocksServerHandler extends SimpleChannelInboundHandler<Socks5
     public void channelRead0(ChannelHandlerContext ctx, Socks5Message socksRequest) throws Exception {
         if (socksRequest instanceof Socks5PasswordAuthRequest) {
             Socks5PasswordAuthRequest socks5PasswordAuthRequest=(Socks5PasswordAuthRequest)socksRequest;
-            if("admin".equals(socks5PasswordAuthRequest.username())&&"123456".equals(socks5PasswordAuthRequest.password())){
+            if(Conf.user.equals(socks5PasswordAuthRequest.username())&& Conf.password.equals(socks5PasswordAuthRequest.password())){
                 ctx.pipeline().addAfter("Socks5PasswordAuthRequestDecoder",null,new Socks5CommandRequestDecoder());
                 ctx.write(new DefaultSocks5PasswordAuthResponse(Socks5PasswordAuthStatus.SUCCESS));
             }else {
