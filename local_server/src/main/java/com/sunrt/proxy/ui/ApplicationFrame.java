@@ -27,7 +27,6 @@ public class ApplicationFrame extends JFrame {
                 FontRenderContext fontRenderContext=g2.getFontRenderContext();
                 Font font=new Font("幼圆", Font.PLAIN, 18);
                 g2.setFont(font);
-
                 font.getLineMetrics("中文", fontRenderContext);
 
 
