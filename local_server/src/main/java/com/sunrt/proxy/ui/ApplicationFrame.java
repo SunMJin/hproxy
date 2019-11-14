@@ -26,9 +26,16 @@ public class ApplicationFrame extends JFrame {
 
                 FontRenderContext fontRenderContext=g2.getFontRenderContext();
                 Font font=new Font("幼圆", Font.PLAIN, 18);
-                Rectangle2D rectangle2D=font.getStringBounds("中文", fontRenderContext);
-
                 g2.setFont(font);
+
+                font.getLineMetrics("中文", fontRenderContext);
+
+
+                Rectangle2D rectangle2D=font.getStringBounds("中文", fontRenderContext);
+                rectangle2D.getWidth();
+                rectangle2D.getHeight();
+                double t=-rectangle2D.getY();
+
                 g2.drawString("中文", 75,100 );
             }
             @Override
