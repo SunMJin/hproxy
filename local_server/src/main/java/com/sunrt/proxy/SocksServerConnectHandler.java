@@ -1,6 +1,6 @@
 package com.sunrt.proxy;
 
-import com.sunrt.proxy.utils.Conf;
+import com.sunrt.proxy.utils.LocalConf;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -24,7 +24,7 @@ public final class SocksServerConnectHandler extends SimpleChannelInboundHandler
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new RemoteSocksServerInitializer(request,ctx));
-        b.connect(Conf.remoteHost, Conf.remotePort).addListener((ChannelFutureListener) future -> {
+        b.connect(LocalConf.remoteHost, LocalConf.remotePort).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {
             } else {
                 ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));

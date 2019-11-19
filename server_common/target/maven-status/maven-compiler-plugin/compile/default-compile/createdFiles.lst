@@ -1,3 +1,4 @@
 com\sunrt\proxy\utils\SocksServerUtils.class
 com\sunrt\proxy\utils\TLSUtil.class
-com\sunrt\proxy\utils\Conf.class
+com\sunrt\proxy\utils\LocalConf.class
+com\sunrt\proxy\utils\ServerConf.class

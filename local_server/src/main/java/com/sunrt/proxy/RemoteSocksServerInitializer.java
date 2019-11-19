@@ -1,6 +1,6 @@
 package com.sunrt.proxy;
 
-import com.sunrt.proxy.utils.Conf;
+import com.sunrt.proxy.utils.LocalConf;
 import com.sunrt.proxy.utils.TLSUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
@@ -27,7 +27,7 @@ public class RemoteSocksServerInitializer extends ChannelInitializer<SocketChann
     }
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast(sslCtx.newHandler(ch.alloc(), Conf.remoteHost, Conf.remotePort));
+        ch.pipeline().addLast(sslCtx.newHandler(ch.alloc(), LocalConf.remoteHost, LocalConf.remotePort));
         ch.pipeline().addLast(Socks5ClientEncoder.DEFAULT);
         ch.pipeline().addLast("Socks5PasswordAuthResponseDecoder",new Socks5PasswordAuthResponseDecoder());
         ch.pipeline().addLast(new RemoteProxySocksHandler(request,ctx));

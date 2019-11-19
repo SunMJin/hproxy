@@ -1,3 +1,4 @@
-C:\Users\sun\Desktop\hproxy\common\src\main\java\Conf.java
-C:\Users\sun\Desktop\hproxy\common\src\main\java\SocksServerUtils.java
-C:\Users\sun\Desktop\hproxy\common\src\main\java\TLSUtil.java
+C:\Users\sun\Desktop\hproxy\server_common\src\main\java\com\sunrt\proxy\utils\TLSUtil.java
+C:\Users\sun\Desktop\hproxy\server_common\src\main\java\com\sunrt\proxy\utils\ServerConf.java
+C:\Users\sun\Desktop\hproxy\server_common\src\main\java\com\sunrt\proxy\utils\LocalConf.java
+C:\Users\sun\Desktop\hproxy\server_common\src\main\java\com\sunrt\proxy\utils\SocksServerUtils.java
