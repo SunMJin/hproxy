@@ -1,65 +1,76 @@
 package com.sunrt.proxy;
 
+import com.sunrt.proxy.protocol.SSAddrRequest;
 import com.sunrt.proxy.utils.SocksServerUtils;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.socksx.v5.DefaultSocks5CommandResponse;
-import io.netty.handler.codec.socksx.v5.Socks5CommandRequest;
-import io.netty.handler.codec.socksx.v5.Socks5CommandStatus;
-import io.netty.handler.codec.socksx.v5.Socks5Message;
 import io.netty.util.concurrent.FutureListener;
 import io.netty.util.concurrent.Promise;
 
-@ChannelHandler.Sharable
-public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<Socks5Message> {
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Bootstrap b = new Bootstrap();
+
+public final class SocksServerConnectHandler extends SimpleChannelInboundHandler<ByteBuf> {
+
+    final Bootstrap b = new Bootstrap();
+    Channel remote_channel;
+    public List<ByteBuf> list=new ArrayList<>();
 
     @Override
-    public void channelRead0(final ChannelHandlerContext server_ctx, final Socks5Message message) throws Exception {
-        final Socks5CommandRequest request = (Socks5CommandRequest) message;
-        Promise<Channel> promise = server_ctx.executor().newPromise();
-        promise.addListener(
-                (FutureListener<Channel>) future -> {
-                    final Channel remote_channel = future.getNow();
-                    if (future.isSuccess()) {
-                        ChannelFuture responseFuture =
-                                server_ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(
-                                        Socks5CommandStatus.SUCCESS,
-                                        request.dstAddrType(),
-                                        request.dstAddr(),
-                                        request.dstPort()));
-                        responseFuture.addListener((ChannelFutureListener) channelFuture -> {
-                            server_ctx.pipeline().remove(SocksServerConnectHandler.this);
-                            remote_channel.pipeline().addLast(new InRelayHandler(server_ctx.channel()));
-                            server_ctx.pipeline().addLast(new OutRelayHandler(remote_channel));
-                        });
-                    } else {
-                        server_ctx.channel().writeAndFlush(new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
-                        SocksServerUtils.closeOnFlush(server_ctx.channel());
-                    }
-                });
+    public void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+        SSAddrRequest addrRequest = SSAddrRequest.getAddrRequest(msg);
+        if(addrRequest!=null){
+            InetSocketAddress addr = new InetSocketAddress(addrRequest.host(), addrRequest.port());
+            list.add(msg.retain());
+            final Channel inboundChannel = ctx.channel();
+            Promise<Channel> promise = ctx.executor().newPromise();
+            promise.addListener(
+                    (FutureListener<Channel>) future -> {
+                        final Channel remote_channel = future.getNow();
+                        if (future.isSuccess()) {
+                            this.remote_channel=remote_channel;
+                            for(ByteBuf b:list){
+                                remote_channel.write(b);
+                            }
+                            remote_channel.flush();
+                            if(ctx.channel().isOpen()){
+                                ctx.pipeline().remove(SocksServerConnectHandler.this);
+                                ctx.pipeline().addLast(new OutRelayHandler(remote_channel));
+                            }
+                            remote_channel.pipeline().addLast(new InRelayHandler(ctx.channel()));
+                        } else {
+                            SocksServerUtils.closeOnFlush(ctx.channel());
+                        }
+                    });
 
-        final Channel inboundChannel = server_ctx.channel();
-        b.group(inboundChannel.eventLoop())
-                .channel(NioSocketChannel.class)
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
-                .option(ChannelOption.SO_KEEPALIVE, true)
-                .handler(new DirectClientHandler(promise));
-
-        b.connect(request.dstAddr(), request.dstPort()).addListener((ChannelFutureListener) future -> {
-            if (future.isSuccess()) {
-            } else {
-                server_ctx.channel().writeAndFlush(
-                        new DefaultSocks5CommandResponse(Socks5CommandStatus.FAILURE, request.dstAddrType()));
-                SocksServerUtils.closeOnFlush(server_ctx.channel());
+            b.group(inboundChannel.eventLoop())
+                    .channel(NioSocketChannel.class)
+                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
+                    .option(ChannelOption.SO_KEEPALIVE, true)
+                    .handler(new DirectClientHandler(promise));
+            b.connect(addr).addListener((ChannelFutureListener) future -> {
+                if (!future.isSuccess()) {
+                    SocksServerUtils.closeOnFlush(ctx.channel());
+                }
+            });
+        }else{
+            if(this.remote_channel==null){
+                list.add(msg.retain());
             }
-        });
+        }
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) {
+        ctx.flush();
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) {
         SocksServerUtils.closeOnFlush(ctx.channel());
     }
 }

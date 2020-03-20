@@ -31,7 +31,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.sunrt.proxy.RemoteSocksServer</mainClass>
+                            <mainClass>RemoteServerApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

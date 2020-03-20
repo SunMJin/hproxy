@@ -1,26 +1,28 @@
 package com.sunrt.proxy;
 
+import com.sunrt.proxy.encryption.CryptFactory;
+import com.sunrt.proxy.protocol.CryptDecode;
+import com.sunrt.proxy.protocol.CryptEncode;
+import com.sunrt.proxy.protocol.SSCommon;
+import com.sunrt.proxy.utils.ServerConfig;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.socksx.v5.Socks5CommandRequestDecoder;
-import io.netty.handler.codec.socksx.v5.Socks5InitialRequestDecoder;
-import io.netty.handler.codec.socksx.v5.Socks5PasswordAuthRequestDecoder;
 import io.netty.handler.codec.socksx.v5.Socks5ServerEncoder;
-import io.netty.handler.ssl.SslContext;
 
 public final class SocksServerInitializer extends ChannelInitializer<SocketChannel> {
 
-    private final SslContext sslCtx;
+    private ServerConfig serverConfig;
 
-    public SocksServerInitializer(SslContext sslCtx) {
-        this.sslCtx = sslCtx;
+    public SocksServerInitializer(ServerConfig serverConfig) {
+        this.serverConfig = serverConfig;
     }
 
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast(sslCtx.newHandler(ch.alloc()));
-        ch.pipeline().addLast(Socks5ServerEncoder.DEFAULT);
-        ch.pipeline().addLast("Socks5PasswordAuthRequestDecoder",new Socks5PasswordAuthRequestDecoder());
-        ch.pipeline().addLast(SocksServerHandler.INSTANCE);
+        ch.attr(SSCommon.CIPHER).set(CryptFactory.get(serverConfig.method, serverConfig.password));
+        ch.pipeline().addLast(new CryptEncode());
+
+        ch.pipeline().addLast(new CryptDecode());
+        ch.pipeline().addLast(new SocksServerConnectHandler());
     }
 }

@@ -1,7 +1,6 @@
-com\sunrt\proxy\RemoteSocksServer.class
-com\sunrt\proxy\SocksServerConnectHandler.class
 com\sunrt\proxy\InRelayHandler.class
-com\sunrt\proxy\SocksServerHandler.class
 com\sunrt\proxy\DirectClientHandler.class
 com\sunrt\proxy\OutRelayHandler.class
 com\sunrt\proxy\SocksServerInitializer.class
+RemoteServerApplication.class
+com\sunrt\proxy\SocksServerConnectHandler.class
